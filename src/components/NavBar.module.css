@@ -1,0 +1,50 @@
+.navBar {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 3%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-family: Montserrat;
+}
+
+.navBar__logo {
+  cursor: pointer;
+  font-weight: 400;
+  font-size: 19px;
+  transition: 0.4s;
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.466);
+  }
+
+  & span {
+    font-weight: 800;
+  }
+}
+
+.navBar__menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.menu__link a {
+  padding: 6px 8px;
+  text-decoration: none;
+  color: black;
+  transition: color 0.4s, background-color 0.5s;
+
+  &:hover {
+    color: rgba(0, 0, 0, 0.39);
+  }
+}
+
+a.active {
+  background-color: black;
+  color: white;
+
+  &:hover {
+    color: rgb(187, 187, 187);
+  }
+}
