@@ -71,12 +71,27 @@
     padding: 10px;
     border-radius: 5px;
     overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .navBar__menuToggle--clicked > .menuToggle__line:nth-of-type(1) {
+    transform: translate(5px, 10px) rotate(45deg) scalex(1.3);
+  }
+
+  .navBar__menuToggle--clicked > .menuToggle__line:nth-of-type(2) {
+    transform: translate(50px, 0);
+  }
+  
+  .navBar__menuToggle--clicked > .menuToggle__line:nth-of-type(3) {
+    transform-origin: center;
+    transform: rotate(672deg) translate(14px, 1px) scalex(2.17);
   }
 
   .menuToggle__line {
     height: 5px;
     background-color: black;
     border-radius: 10px;
+    transition: .5s;
   }
 
   .menuToggle__line:nth-of-type(1) {
@@ -96,12 +111,19 @@
     list-style: none;
     text-align: center;
     position: absolute;
+    height: 0;
     right: 10px;
     top: 95px;
     border-bottom-right-radius: 15px;
-    border-bottom-left-radius:15px ;
+    border-bottom-left-radius: 15px;
+    overflow: hidden;
+    transition: .5s;
   }
-  
+
+  .navBar__links--visible{
+    height: 156px;
+  }
+
   .navBar__links li {
     padding: 10px;
     cursor: pointer;
@@ -113,10 +135,10 @@
     }
   }
 
-  .navBar__links li:active{
+  .navBar__links li:active {
     background-color: white;
 
-    & > a{
+    & > a {
       color: black;
     }
   }
