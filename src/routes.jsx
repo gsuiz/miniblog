@@ -13,15 +13,15 @@ const routes = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <h1>entrar</h1>
+        element: <div>entrar</div>
       },
       {
         path:"/register",
-        element: <h1>cadastrar</h1>
+        element: <div>cadastrar</div>
       },
       {
         path:"/about",
-        element:<h1>sobre</h1>
+        element:<div>sobre</div>
       }
     ],
   },

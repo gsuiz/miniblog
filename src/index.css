@@ -7,3 +7,14 @@
 body{
     font-family: Montserrat;
 }
+
+#root{
+    min-height: 100vh;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+#root div:nth-child(2){
+    flex-grow: 1;
+}
