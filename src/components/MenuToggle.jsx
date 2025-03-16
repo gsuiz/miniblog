@@ -24,16 +24,16 @@ function MenuToggle() {
           clicked ? style['navBar__links--visible'] : null
         }`}
       >
-        <li>
+        <li onClick={handleClick}>
           <NavLink to="/">Home</NavLink>
         </li>
-        <li>
+        <li onClick={handleClick}>
           <NavLink to="/login">Entrar</NavLink>
         </li>
-        <li>
+        <li onClick={handleClick}>
           <NavLink to="/register">Cadastrar</NavLink>
         </li>
-        <li>
+        <li onClick={handleClick}>
           <NavLink to="/about">Sobre</NavLink>
         </li>
       </ul>
