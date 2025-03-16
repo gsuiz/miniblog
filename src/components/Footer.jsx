@@ -1,9 +1,13 @@
-import styles from "./Footer.module.css"
+import "./Footer.css"
+function Footer() {
+  const date = new Date().getFullYear()
 
-function Footer(){
-    return (
-        null
-    )
+  return (
+    <footer>
+      <p>Escreva sobre o que você tem interesse!</p>
+      <p>Mini Blog ©{date}</p>
+    </footer>
+  )
 }
 
 export default Footer
