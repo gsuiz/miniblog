@@ -5,7 +5,6 @@
   align-items: center;
   padding: 25px 3%;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  font-family: Montserrat;
 }
 
 .navBar__logo {
@@ -59,6 +58,11 @@
   .navBar {
     padding: 25px 30px;
   }
+
+  .navBar__logo{
+    font-size: 22px;
+  }
+
   .navBar__menu {
     display: none;
   }
