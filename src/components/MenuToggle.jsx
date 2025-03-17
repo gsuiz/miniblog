@@ -1,8 +1,20 @@
 import { NavLink } from 'react-router'
 import style from './NavBar.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function MenuToggle() {
+
+useEffect(() => {
+  const menuToogle = document.querySelector(style.navBar__menuToogle)
+  document.addEventListener("click", (e) => {
+    if(e.target === menuToogle){
+      console.log("a")
+    }
+  })
+  
+  return () => document.removeEventListener("click", () => setClicked(false))
+}, [])
+
   const [clicked, setClicked] = useState(false)
 
   const handleClick = () => setClicked((prev) => !prev)

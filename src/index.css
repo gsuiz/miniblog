@@ -2,9 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body{
     font-family: Montserrat;
 }
 
@@ -17,4 +14,5 @@ body{
 
 #root div:nth-child(2){
     flex-grow: 1;
+    text-align: center;
 }

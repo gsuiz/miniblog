@@ -1,3 +1,4 @@
+import InputField from '../../components/InputField'
 import styles from './Home.module.css'
 
 function Home() {
@@ -5,9 +6,8 @@ function Home() {
     <div className={styles.home}>
       <h1>Veja os nossos posts mais recentes</h1>
       <form>
-        <input
+        <InputField 
           type="text"
-          className={styles.inputTags}
           placeholder="Ou busque por tags..."
           name="tag"
         />
