@@ -1,5 +1,5 @@
 import style from './Login.module.css'
-import InputField from '../../components/InputField'
+import LabeledInput from '../../components/LabeledInput'
 import GreenButton from '../../components/GreenButton'
 
 function Login() {
@@ -8,24 +8,18 @@ function Login() {
       <h1>Entrar</h1>
       <p>Faça o login para poder utilizar o sistema</p>
       <form className={style.login__form}>
-        <label>
-          E-mail:
-          <InputField
-            type="email"
-            placeholder="Email do usuário"
-            name="email"
-            modifier="aumentado"
-          />
-        </label>
-        <label>
-          Senha:
-          <InputField
-            type="password"
-            placeholder="Insira a senha"
-            name="password"
-            modifier="aumentado"
-          />
-        </label>
+        <LabeledInput
+          label="Nome:"
+          type="text"
+          placeholder="Email do usuário"
+          name="email"
+        ></LabeledInput>
+        <LabeledInput
+          label="Senha:"
+          type="password"
+          placeholder="Insira a senha"
+          name="password"
+        ></LabeledInput>
         <GreenButton text="Entrar" />
       </form>
     </div>

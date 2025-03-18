@@ -1,5 +1,5 @@
 .home {
-  padding: 0 5%;
+  max-width: 90vw !important  ;
 }
 
 form {
@@ -16,12 +16,10 @@ form {
 
 
 @media screen and (max-width:600px) {
-    form{
-        margin-top: 35px;
-    }
-
     .searchBtn{
         font-size: 14px;
         padding: 11px 15px;
+        display: block;
+        margin: auto;
     }
 }
