@@ -3,17 +3,23 @@ import style from './NavBar.module.css'
 import { useEffect, useState } from 'react'
 
 function MenuToggle() {
+  const removeMenu = (event) => {
+    const menuToggle = document.querySelector(`.${style.navBar__menuToggle}`)
 
-useEffect(() => {
-  const menuToogle = document.querySelector(style.navBar__menuToogle)
-  document.addEventListener("click", (e) => {
-    if(e.target === menuToogle){
-      console.log("a")
+    console.log(event.target)
+
+    console.log(menuToggle.contains(event.target))
+
+    if (!menuToggle.contains(event.target)) {
+      setClicked(false)
     }
-  })
-  
-  return () => document.removeEventListener("click", () => setClicked(false))
-}, [])
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', (e) => removeMenu(e))
+
+    return () => document.removeEventListener('click', (e) => removeMenu(e))
+  }, [])
 
   const [clicked, setClicked] = useState(false)
 
