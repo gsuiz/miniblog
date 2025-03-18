@@ -3,6 +3,7 @@ import App from './App'
 import Home from './routes/home/Home'
 import Login from './routes/Login/Login'
 import Register from './routes/Register/Register'
+import About from './routes/About/About'
 
 const routes = createBrowserRouter([
   {
@@ -14,17 +15,17 @@ const routes = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/login",
-        element: <Login/>
+        path: '/login',
+        element: <Login />,
       },
       {
-        path:"/register",
-        element: <Register/>
+        path: '/register',
+        element: <Register />,
       },
       {
-        path:"/about",
-        element:<div>sobre</div>
-      }
+        path: '/about',
+        element: <About/>,
+      },
     ],
   },
 ])
