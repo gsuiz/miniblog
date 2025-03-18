@@ -15,14 +15,8 @@
 .login__form {
   text-align: left;
 }
-
-label {
-  font-weight: bold;
-}
-
+/* 
 .login__form  input,
 .form__button {
-  display: block;
-  margin:3px auto;
-  margin-bottom: 15px;
-} 
+  
+}  */
