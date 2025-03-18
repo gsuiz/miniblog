@@ -1,23 +1,9 @@
 .home {
-  text-align: center;
-  margin-top: 30px;
   padding: 0 5%;
 }
 
 form {
   margin-top: 20px;
-}
-
-.inputTags {
-  border: none;
-  border-bottom: 2px solid gray;
-  font-family: Montserrat;
-  padding: 10px 0;
-  outline: none;
-  width: 440px;
-  max-width: 50vw;
-  background-color: transparent;
-  margin-right: 10px;
 }
 
 .searchBtn {

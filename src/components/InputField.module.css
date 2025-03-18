@@ -1,0 +1,21 @@
+.InputField {
+  border: none;
+  border-bottom: 2px solid gray;
+  font-family: Montserrat;
+  font-weight: 500;
+  padding: 10px 0;
+  outline: none;
+  width: 440px;
+  max-width: 50vw;
+  background-color: transparent;
+  margin-right: 10px;
+}
+
+.InputField::placeholder{
+  color: rgb(178, 159, 159);
+}
+
+.InputField--aumentado{
+  width: 630px;
+  max-width: 80vw;
+}

@@ -1,8 +1,22 @@
 import { NavLink } from 'react-router'
 import style from './NavBar.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function MenuToggle() {
+  const removeMenu = (event) => {
+    const menuToggle = document.querySelector(`.${style.navBar__menuToggle}`)
+
+    if (!menuToggle.contains(event.target)) {
+      setClicked(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', (e) => removeMenu(e))
+
+    return () => document.removeEventListener('click', (e) => removeMenu(e))
+  }, [])
+
   const [clicked, setClicked] = useState(false)
 
   const handleClick = () => setClicked((prev) => !prev)
@@ -24,16 +38,16 @@ function MenuToggle() {
           clicked ? style['navBar__links--visible'] : null
         }`}
       >
-        <li onClick={handleClick}>
+        <li>
           <NavLink to="/">Home</NavLink>
         </li>
-        <li onClick={handleClick}>
+        <li>
           <NavLink to="/login">Entrar</NavLink>
         </li>
-        <li onClick={handleClick}>
+        <li>
           <NavLink to="/register">Cadastrar</NavLink>
         </li>
-        <li onClick={handleClick}>
+        <li>
           <NavLink to="/about">Sobre</NavLink>
         </li>
       </ul>
