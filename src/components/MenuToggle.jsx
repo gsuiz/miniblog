@@ -6,10 +6,6 @@ function MenuToggle() {
   const removeMenu = (event) => {
     const menuToggle = document.querySelector(`.${style.navBar__menuToggle}`)
 
-    console.log(event.target)
-
-    console.log(menuToggle.contains(event.target))
-
     if (!menuToggle.contains(event.target)) {
       setClicked(false)
     }
@@ -42,16 +38,16 @@ function MenuToggle() {
           clicked ? style['navBar__links--visible'] : null
         }`}
       >
-        <li onClick={handleClick}>
+        <li>
           <NavLink to="/">Home</NavLink>
         </li>
-        <li onClick={handleClick}>
+        <li>
           <NavLink to="/login">Entrar</NavLink>
         </li>
-        <li onClick={handleClick}>
+        <li>
           <NavLink to="/register">Cadastrar</NavLink>
         </li>
-        <li onClick={handleClick}>
+        <li>
           <NavLink to="/about">Sobre</NavLink>
         </li>
       </ul>
