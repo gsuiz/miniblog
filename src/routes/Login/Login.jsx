@@ -9,8 +9,8 @@ function Login() {
       <p>Faça o login para poder utilizar o sistema</p>
       <form className={style.login__form}>
         <LabeledInput
-          label="Nome:"
-          type="text"
+          label="Email:"
+          type="email"
           placeholder="Email do usuário"
           name="email"
         ></LabeledInput>
