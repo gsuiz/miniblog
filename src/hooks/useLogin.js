@@ -1,29 +1,25 @@
-import { useReducer } from 'react'
+import { useReducer, useState } from 'react'
 
-function useRegister() {
+function useLogin() {
   const initialValue = {
-    name: '',
     email: '',
     password: '',
-    confirmation_password: '',
   }
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'update_name':
-        return { ...state, name: action.payload }
       case 'update_email':
         return { ...state, email: action.payload }
       case 'update_password':
+        setErrors(null)
         return { ...state, password: action.payload }
-      case 'update_confirmation_password':
-        return { ...state, confirmation_password: action.payload }
       default:
         return state
     }
   }
 
-  const [registrationData, dispatch] = useReducer(reducer, initialValue)
+  const [errors, setErrors] = useState(null)
+  const [loginCredentials, dispatch] = useReducer(reducer, initialValue)
 
   const handleChange = (e) =>
     dispatch({ type: `update_${e.target.name}`, payload: e.target.value })
@@ -31,9 +27,15 @@ function useRegister() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    console.log(registrationData)
+    const login = false
+    if (!login) {
+      setErrors(
+        'Falha no login: Usuário não encontrado ou credenciais incorretas.'
+      )
+    }
   }
-  return { registrationData, handleChange, handleSubmit }
+
+  return { loginCredentials, handleChange, handleSubmit, errors }
 }
 
-export default useRegister
+export default useLogin

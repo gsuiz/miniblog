@@ -5,7 +5,7 @@ import useLogin from '../../hooks/useLogin'
 
 function Login() {
 
-  const { loginCredentials, handleChange, handleSubmit } = useLogin()
+  const { loginCredentials, handleChange, handleSubmit, errors } = useLogin()
 
   return (
     <div className={style.login}>
@@ -30,6 +30,9 @@ function Login() {
         ></LabeledInput>
         <GreenButton text="Entrar" />
       </form>
+      {errors && (
+        <div className="error">{errors}</div>
+      )}
     </div>
   )
 }

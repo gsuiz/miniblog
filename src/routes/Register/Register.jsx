@@ -4,7 +4,8 @@ import GreenButton from '../../components/GreenButton'
 import useRegister from '../../hooks/useRegister'
 
 function Register() {
-  const { registrationData, handleChange, handleSubmit } = useRegister()
+  const { registrationData, handleChange, handleSubmit, errors, loading } =
+    useRegister()
 
   return (
     <div className={style.register}>
@@ -43,8 +44,13 @@ function Register() {
           handle={handleChange}
           value={registrationData.confirmation_password}
         ></LabeledInput>
-        <GreenButton text="Entrar"></GreenButton>
+        {loading ? (
+          <GreenButton text="Cadastrando..." active={false}></GreenButton>
+        ) : (
+          <GreenButton text="Entrar"></GreenButton>
+        )}
       </form>
+      {errors && <div className="error">{errors}</div>}
     </div>
   )
 }
