@@ -1,6 +1,6 @@
 import InputField from './InputField'
 
-function LabeledInput({ label, type, placeholder, name }) {
+function LabeledInput({ label, type, placeholder, name, handle, value }) {
   return (
     <label>
       {label}
@@ -9,6 +9,8 @@ function LabeledInput({ label, type, placeholder, name }) {
         placeholder={placeholder}
         name={name}
         modifier="extended"
+        handle={handle}
+        value={value}
       ></InputField>
     </label>
   )
