@@ -12,25 +12,33 @@ function Register() {
           label="Nome:"
           type="text"
           placeholder="Nome do usuário"
-          name="username"
+          name="name"
+          handle={handleChange}
+          value={user.name}
         ></LabeledInput>
         <LabeledInput
           label="Email:"
           type="email"
           placeholder="E-mail do usuário"
           name="email"
+          handle={handleChange}
+          value={user.email}
         ></LabeledInput>
         <LabeledInput
           label="Senha:"
           type="password"
           placeholder="Insira a senha"
           name="password"
+          handle={handleChange}
+          value={user.password}
         ></LabeledInput>
         <LabeledInput
           label="Confirmação de senha:"
           type="password"
           placeholder="Confirme a senha"
           name="confirmation_password"
+          handle={handleChange}
+          value={user.confirmation_password}
         ></LabeledInput>
         <GreenButton text="Entrar"></GreenButton>
       </form>
