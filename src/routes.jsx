@@ -4,6 +4,8 @@ import Home from './routes/home/Home'
 import Login from './routes/Login/Login'
 import Register from './routes/Register/Register'
 import About from './routes/About/About'
+import NewPost from './routes/New_Post/NewPost'
+import Dashboard from './routes/Dashboard/Dashboard'
 
 const routes = createBrowserRouter([
   {
@@ -24,8 +26,16 @@ const routes = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <About/>,
+        element: <About />,
       },
+      {
+        path: '/newpost',
+        element: <NewPost />,
+      },
+      {
+        path: '/dashboard',
+        element: <Dashboard/>
+      }
     ],
   },
 ])
