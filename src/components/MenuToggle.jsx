@@ -1,8 +1,11 @@
 import { NavLink } from 'react-router'
 import style from './NavBar.module.css'
 import { useEffect, useState } from 'react'
+import { useAuthValue } from '../context/AuthContext'
 
 function MenuToggle() {
+  const { user } = useAuthValue()
+
   const removeMenu = (event) => {
     const menuToggle = document.querySelector(`.${style.navBar__menuToggle}`)
 
@@ -35,21 +38,38 @@ function MenuToggle() {
       </div>
       <ul
         className={`${style.navBar__links} ${
-          clicked ? style['navBar__links--visible'] : null
+          clicked
+            ? user
+              ? style['navBar__links--visible-logged']
+              : style['navBar__links--visible-guest']
+            : null
         }`}
       >
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/login">Entrar</NavLink>
+          {user ? (
+            <NavLink to="/newpost">Novo post</NavLink>
+          ) : (
+            <NavLink to="/login">Entrar</NavLink>
+          )}
         </li>
         <li>
-          <NavLink to="/register">Cadastrar</NavLink>
+          {user ? (
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          ) : (
+            <NavLink to="/register">Cadastrar</NavLink>
+          )}
         </li>
         <li>
           <NavLink to="/about">Sobre</NavLink>
         </li>
+        {user ? (
+          <li>
+            <NavLink>Sair</NavLink>
+          </li>
+        ) : null}
       </ul>
     </>
   )

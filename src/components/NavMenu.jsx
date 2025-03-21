@@ -1,7 +1,10 @@
 import style from './NavBar.module.css'
 import { NavLink } from 'react-router'
+import { useAuthValue } from '../context/AuthContext'
 
 function NavMenu() {
+  const { user } = useAuthValue()
+
   return (
     <ul className={style.navBar__menu}>
       <li className={style.menu__link}>
@@ -12,22 +15,44 @@ function NavMenu() {
           Home
         </NavLink>
       </li>
-      <li className={style.menu__link}>
-        <NavLink
-          to="/login"
-          className={({ isActive }) => (isActive ? style.active : null)}
-        >
-          Entrar
-        </NavLink>
-      </li>
-      <li className={style.menu__link}>
-        <NavLink
-          to="/register"
-          className={({ isActive }) => (isActive ? style.active : null)}
-        >
-          Cadastrar
-        </NavLink>
-      </li>
+      {user ? (
+        <li className={style.menu__link}>
+          <NavLink
+            to="/newpost"
+            className={({ isActive }) => (isActive ? style.active : null)}
+          >
+            Novo post
+          </NavLink>
+        </li>
+      ) : (
+        <li className={style.menu__link}>
+          <NavLink
+            to="/login"
+            className={({ isActive }) => (isActive ? style.active : null)}
+          >
+            Entrar
+          </NavLink>
+        </li>
+      )}
+      {user ? (
+        <li className={style.menu__link}>
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) => (isActive ? style.active : null)}
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : (
+        <li className={style.menu__link}>
+          <NavLink
+            to="/register"
+            className={({ isActive }) => (isActive ? style.active : null)}
+          >
+            Cadastrar
+          </NavLink>
+        </li>
+      )}
       <li className={style.menu__link}>
         <NavLink
           to="/about"
@@ -36,6 +61,9 @@ function NavMenu() {
           Sobre
         </NavLink>
       </li>
+      {user ? <li className={style.menu__link}>
+        <NavLink>Sair</NavLink>
+        </li> : null}
     </ul>
   )
 }
