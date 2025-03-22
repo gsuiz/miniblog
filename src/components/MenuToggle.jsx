@@ -50,7 +50,7 @@ function MenuToggle() {
         </li>
         <li>
           {user ? (
-            <NavLink to="/newpost">Novo post</NavLink>
+            <NavLink to="/posts/create">Novo post</NavLink>
           ) : (
             <NavLink to="/login">Entrar</NavLink>
           )}

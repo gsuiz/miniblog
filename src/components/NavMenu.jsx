@@ -18,7 +18,7 @@ function NavMenu() {
       {user ? (
         <li className={style.menu__link}>
           <NavLink
-            to="/newpost"
+            to="/posts/create"
             className={({ isActive }) => (isActive ? style.active : null)}
           >
             Novo post
