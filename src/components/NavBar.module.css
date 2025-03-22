@@ -8,6 +8,18 @@
   margin-bottom: 30px;
 }
 
+.navBar button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.navBar__links button {
+  color: white;
+}
+
 .navBar__logo {
   cursor: pointer;
   font-weight: 400;
@@ -40,10 +52,10 @@
     color: black;
     transition: color 0.4s, background-color 0.5s;
     display: inline;
+  }
 
-    &:hover {
-      color: rgba(0, 0, 0, 0.39);
-    }
+  .menu__link :is(a, button):hover {
+    color: rgba(0, 0, 0, 0.39);
   }
 
   a.active {
@@ -113,6 +125,7 @@
   }
 
   .navBar__links {
+    width: 109px;
     background-color: black;
     list-style: none;
     text-align: center;
@@ -130,12 +143,12 @@
     height: 195px;
   }
 
-  .navBar__links--visible-guest{
+  .navBar__links--visible-guest {
     height: 156px;
   }
 
   .navBar__links li {
-    padding: 10px;
+    height: 39px;
     cursor: pointer;
 
     & > a {
@@ -144,6 +157,14 @@
       -webkit-tap-highlight-color: transparent;
       display: inline;
     }
+  }
+
+  .navBar__links :is(li a, button) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 
   .navBar__links li:active {
