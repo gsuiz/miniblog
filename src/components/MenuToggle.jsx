@@ -1,8 +1,14 @@
-import { NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import style from './NavBar.module.css'
 import { useEffect, useState } from 'react'
+import { useAuthValue } from '../context/AuthContext'
+import { useAuth } from '../hooks/useAuth'
 
 function MenuToggle() {
+  const { user } = useAuthValue()
+  const { logout } = useAuth()
+  const navigate = useNavigate()
+
   const removeMenu = (event) => {
     const menuToggle = document.querySelector(`.${style.navBar__menuToggle}`)
 
@@ -35,21 +41,41 @@ function MenuToggle() {
       </div>
       <ul
         className={`${style.navBar__links} ${
-          clicked ? style['navBar__links--visible'] : null
+          clicked
+            ? user
+              ? style['navBar__links--visible-logged']
+              : style['navBar__links--visible-guest']
+            : null
         }`}
       >
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/login">Entrar</NavLink>
+          {user ? (
+            <NavLink to="/posts/create">Novo post</NavLink>
+          ) : (
+            <NavLink to="/login">Entrar</NavLink>
+          )}
         </li>
         <li>
-          <NavLink to="/register">Cadastrar</NavLink>
+          {user ? (
+            <NavLink to="/dashboard">Dashboard</NavLink>
+          ) : (
+            <NavLink to="/register">Cadastrar</NavLink>
+          )}
         </li>
         <li>
           <NavLink to="/about">Sobre</NavLink>
         </li>
+        {user && (
+          <li>
+            <button onClick={() => {
+              logout()
+              navigate("/login")
+            }}>Sair</button>
+          </li>
+        )}
       </ul>
     </>
   )

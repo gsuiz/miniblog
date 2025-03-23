@@ -1,6 +1,17 @@
-import { useReducer, useState } from 'react'
+import { useReducer, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router'
+import { useAuth } from './useAuth'
 
 function useLogin() {
+  const { error: authError, loading, login } = useAuth()
+  const [errors, setErrors] = useState(null)
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setErrors(authError)
+  }, [authError])
+
   const initialValue = {
     email: '',
     password: '',
@@ -18,24 +29,22 @@ function useLogin() {
     }
   }
 
-  const [errors, setErrors] = useState(null)
   const [loginCredentials, dispatch] = useReducer(reducer, initialValue)
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     dispatch({ type: `update_${e.target.name}`, payload: e.target.value })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    const login = false
-    if (!login) {
-      setErrors(
-        'Falha no login: Usuário não encontrado ou credenciais incorretas.'
-      )
-    }
+    setErrors(null)
   }
 
-  return { loginCredentials, handleChange, handleSubmit, errors }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setErrors(null)
+
+    const res = await login(loginCredentials)
+    if(res === "success") navigate("/")
+  }
+
+  return { loginCredentials, handleChange, handleSubmit, errors, loading }
 }
 
 export default useLogin

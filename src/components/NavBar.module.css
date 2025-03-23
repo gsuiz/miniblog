@@ -8,6 +8,18 @@
   margin-bottom: 30px;
 }
 
+.navBar button {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.navBar__links button {
+  color: white;
+}
+
 .navBar__logo {
   cursor: pointer;
   font-weight: 400;
@@ -23,7 +35,7 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
   .navBar__menuToggle,
   .navBar__links {
     display: none;
@@ -39,10 +51,11 @@
     text-decoration: none;
     color: black;
     transition: color 0.4s, background-color 0.5s;
+    display: inline;
+  }
 
-    &:hover {
-      color: rgba(0, 0, 0, 0.39);
-    }
+  .menu__link :is(a, button):hover {
+    color: rgba(0, 0, 0, 0.39);
   }
 
   a.active {
@@ -55,12 +68,12 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .navBar {
     padding: 25px 30px;
   }
 
-  .navBar__logo{
+  .navBar__logo {
     font-size: 22px;
   }
 
@@ -78,7 +91,7 @@
     overflow: hidden;
     cursor: pointer;
   }
-  
+
   .navBar__menuToggle--clicked > .menuToggle__line:nth-of-type(1) {
     transform: translate(5px, 10px) rotate(45deg) scalex(1.3);
   }
@@ -86,7 +99,7 @@
   .navBar__menuToggle--clicked > .menuToggle__line:nth-of-type(2) {
     transform: translate(50px, 0);
   }
-  
+
   .navBar__menuToggle--clicked > .menuToggle__line:nth-of-type(3) {
     transform-origin: center;
     transform: rotate(672deg) translate(14px, 1px) scalex(2.17);
@@ -96,7 +109,7 @@
     height: 5px;
     background-color: black;
     border-radius: 10px;
-    transition: .5s;
+    transition: 0.5s;
   }
 
   .menuToggle__line:nth-of-type(1) {
@@ -112,6 +125,7 @@
   }
 
   .navBar__links {
+    width: 109px;
     background-color: black;
     list-style: none;
     text-align: center;
@@ -122,22 +136,35 @@
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
     overflow: hidden;
-    transition: .5s;
+    transition: height 0.5s ease;
   }
 
-  .navBar__links--visible{
+  .navBar__links--visible-logged {
+    height: 195px;
+  }
+
+  .navBar__links--visible-guest {
     height: 156px;
   }
 
   .navBar__links li {
-    padding: 10px;
+    height: 39px;
     cursor: pointer;
 
     & > a {
       text-decoration: none;
       color: white;
       -webkit-tap-highlight-color: transparent;
+      display: inline;
     }
+  }
+
+  .navBar__links :is(li a, button) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
 
   .navBar__links li:active {

@@ -4,6 +4,9 @@ import Home from './routes/home/Home'
 import Login from './routes/Login/Login'
 import Register from './routes/Register/Register'
 import About from './routes/About/About'
+import NewPost from './routes/New_Post/NewPost'
+import Dashboard from './routes/Dashboard/Dashboard'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const routes = createBrowserRouter([
   {
@@ -16,7 +19,7 @@ const routes = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login />,
+        element: <Login></Login>,
       },
       {
         path: '/register',
@@ -24,7 +27,23 @@ const routes = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <About/>,
+        element: <About />,
+      },
+      {
+        path: '/posts/create',
+        element: (
+          <ProtectedRoute>
+            <NewPost/>
+          </ProtectedRoute>
+        )
+      },
+      {
+        path: '/dashboard',
+        element: (
+          <ProtectedRoute>
+            <Dashboard/>
+          </ProtectedRoute>
+        )
       },
     ],
   },

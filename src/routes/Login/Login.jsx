@@ -4,8 +4,8 @@ import GreenButton from '../../components/GreenButton'
 import useLogin from '../../hooks/useLogin'
 
 function Login() {
-
-  const { loginCredentials, handleChange, handleSubmit, errors } = useLogin()
+  const { loginCredentials, handleChange, handleSubmit, errors, loading } =
+    useLogin()
 
   return (
     <div className={style.login}>
@@ -28,11 +28,13 @@ function Login() {
           handle={handleChange}
           value={loginCredentials.password}
         ></LabeledInput>
-        <GreenButton text="Entrar" />
+        {loading ? (
+          <GreenButton text="Aguarde..." active={false} />
+        ) : (
+          <GreenButton text="Entrar" />
+        )}
       </form>
-      {errors && (
-        <div className="error">{errors}</div>
-      )}
+      {errors && <div className="error">{errors}</div>}
     </div>
   )
 }
