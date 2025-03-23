@@ -1,11 +1,12 @@
 import style from './NavBar.module.css'
-import { NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import { useAuth } from '../hooks/useAuth'
 import { useAuthValue } from '../context/AuthContext'
 
 function NavMenu() {
   const { user } = useAuthValue()
   const { logout } = useAuth()
+  const navigate = useNavigate()
 
   return (
     <ul className={style.navBar__menu}>
@@ -65,7 +66,14 @@ function NavMenu() {
       </li>
       {user && (
         <li className={style.menu__link}>
-          <button  onClick={logout}>Sair</button>
+          <button
+            onClick={() => {
+              logout()
+              navigate("/login")
+            }}
+          >
+            Sair
+          </button>
         </li>
       )}
     </ul>

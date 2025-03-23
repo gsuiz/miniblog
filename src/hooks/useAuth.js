@@ -1,4 +1,5 @@
-import { db } from '../firebase/config'
+import { initializeApp } from 'firebase/app'
+import { db, app } from '../firebase/config'
 
 import {
   getAuth,
@@ -15,7 +16,7 @@ export function useAuth() {
   const [loading, setLoading] = useState(false)
   const [cancelled, setCancelled] = useState(false)
 
-  const auth = getAuth()
+  const auth = getAuth(app)
 
   function checkIfIsCancelled() {
     if (cancelled) {
@@ -40,7 +41,7 @@ export function useAuth() {
         displayName: data.displayName,
       })
 
-      return user
+      return "success"
     } catch (error) {
       let systemErrorMessage
 
@@ -62,11 +63,39 @@ export function useAuth() {
     checkIfIsCancelled()
 
     signOut(auth)
+    
+  } 
+
+  const login = async (data) => {
+    checkIfIsCancelled()
+
+    setLoading(true)
+    setError(null)
+
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password)
+      setLoading(false)
+      return "success"
+    } catch (error) {
+      let systemErrorMessage
+
+      if (error.code.includes('invalid-credentia')) {
+        systemErrorMessage = 'Email ou senha incorretos.'
+      } else if (error.code.includes('too-many-requests')) {
+        systemErrorMessage =
+          'Muitas tentativas falhas. Tente novamente mais tarde.'
+      } else {
+        systemErrorMessage = 'Ocorreu um erro inesperado. Tente novamente.'
+      }
+
+      setError(systemErrorMessage)
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
     return () => setCancelled(true)
   }, [])
 
-  return { auth, createUser, error, loading, logout}
+  return { auth, createUser, error, loading, logout, login }
 }

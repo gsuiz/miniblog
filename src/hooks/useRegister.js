@@ -1,8 +1,10 @@
 import { useEffect, useReducer, useState } from 'react'
+import { useNavigate } from 'react-router'
 import { useAuth } from './useAuth'
 
 function useRegister() {
   const { createUser, error: authError, loading } = useAuth()
+  const navigate = useNavigate()
 
   const initialValue = {
     name: '',
@@ -18,10 +20,8 @@ function useRegister() {
       case 'update_email':
         return { ...state, email: action.payload }
       case 'update_password':
-        setErrors(null)
         return { ...state, password: action.payload }
       case 'update_confirmation_password':
-        setErrors(null)
         return { ...state, confirmation_password: action.payload }
       default:
         return state
@@ -44,9 +44,9 @@ function useRegister() {
     if (registrationData.password !== registrationData.confirmation_password) {
       setErrors('As senhas não coincidem. Por favor, tente novamente.')
     } else {
-      const user = await createUser(registrationData)
+      const res = await createUser(registrationData)
 
-      console.log(user)
+      if(res === "success") navigate("/")
     }
   }
   return { registrationData, handleChange, handleSubmit, errors, loading }

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router'
+import { NavLink, useNavigate } from 'react-router'
 import style from './NavBar.module.css'
 import { useEffect, useState } from 'react'
 import { useAuthValue } from '../context/AuthContext'
@@ -7,6 +7,7 @@ import { useAuth } from '../hooks/useAuth'
 function MenuToggle() {
   const { user } = useAuthValue()
   const { logout } = useAuth()
+  const navigate = useNavigate()
 
   const removeMenu = (event) => {
     const menuToggle = document.querySelector(`.${style.navBar__menuToggle}`)
@@ -69,7 +70,10 @@ function MenuToggle() {
         </li>
         {user && (
           <li>
-            <button onClick={logout}>Sair</button>
+            <button onClick={() => {
+              logout()
+              navigate("/login")
+            }}>Sair</button>
           </li>
         )}
       </ul>
