@@ -1,3 +1,14 @@
-a{
-    display: none;
+.createPost h1 {
+  margin-bottom: 20px;
+}
+
+.createPost p {
+  margin-bottom: 30px;
+  color: gray;
+}
+
+@media screen and (max-width: 700px) {
+  textarea {
+    height: 70px;
+  }
 }
