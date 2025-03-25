@@ -5,8 +5,6 @@ import {
   query,
   orderBy,
   onSnapshot,
-  where,
-  QuerySnapshot,
 } from 'firebase/firestore'
 
 function useFetchDocument(docCollection, search = null, uid = null) {
@@ -14,7 +12,7 @@ function useFetchDocument(docCollection, search = null, uid = null) {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(null)
 
-  const [cancelled, setCancelled] = useState(null)
+  const [cancelled, setCancelled] = useState(false)
 
   useEffect(() => {
     async function loadData() {
@@ -27,7 +25,7 @@ function useFetchDocument(docCollection, search = null, uid = null) {
       try {
         let q
 
-        q = await query(collectionRef, orderBy('createAt', 'desc'))
+        q = await query(collectionRef, orderBy('createdAt', 'desc'))
         await onSnapshot(q, (QuerySnapshot) => {
           setDocuments(
             QuerySnapshot.docs.map((doc) => ({

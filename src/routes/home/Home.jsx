@@ -2,10 +2,14 @@ import InputField from '../../components/InputField'
 import styles from './Home.module.css'
 import { Link } from 'react-router'
 import GreenButton from '../../components/GreenButton'
+import useFetchDocument from '../../hooks/useFetchDocument'
+import PostDetails from '../../components/PostDetails'
 
 function Home() {
-  const posts = []
+  const { documents: posts, loading } = useFetchDocument('posts')
 
+
+  console.log(posts)
   return (
     <div className={styles.home}>
       <h1>Veja os nossos posts mais recentes</h1>
@@ -18,14 +22,16 @@ function Home() {
         <button className={styles.searchBtn}>Pesquisar</button>
       </form>
       <div className={styles.home__posts}>
-        {posts && !posts.length ? (
+        {loading && <p>Carregando...</p>}
+        {posts && !posts.length && (
           <div className={styles.home__noposts}>
             <p>Não foram encontrados posts</p>
             <Link to="/posts/create">
               <GreenButton text="Criar primeiro post" />
             </Link>
           </div>
-        ) : null}
+        )}
+        {posts && posts.map(post => <PostDetails key={post.id} post={post}/>)}
       </div>
     </div>
   )
