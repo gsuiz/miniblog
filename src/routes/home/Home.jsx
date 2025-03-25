@@ -1,23 +1,34 @@
 import InputField from '../../components/InputField'
 import styles from './Home.module.css'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import GreenButton from '../../components/GreenButton'
 import useFetchDocument from '../../hooks/useFetchDocument'
 import PostDetails from '../../components/PostDetails'
+import { useState } from 'react'
 
 function Home() {
+  const navigate = useNavigate()
+  const [query, setQuery] = useState("")
   const { documents: posts, loading } = useFetchDocument('posts')
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
-  console.log(posts)
+    if (query) {
+      navigate(`/search?q=${query}`)
+    }
+  }
+
   return (
     <div className={styles.home}>
       <h1>Veja os nossos posts mais recentes</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <InputField
           type="text"
           placeholder="Ou busque por tags..."
           name="tag"
+          handle={(e) => setQuery(e.target.value)}
+          value={query}
         />
         <button className={styles.searchBtn}>Pesquisar</button>
       </form>
@@ -31,7 +42,8 @@ function Home() {
             </Link>
           </div>
         )}
-        {posts && posts.map(post => <PostDetails key={post.id} post={post}/>)}
+        {posts &&
+          posts.map((post) => <PostDetails key={post.id} post={post} />)}
       </div>
     </div>
   )

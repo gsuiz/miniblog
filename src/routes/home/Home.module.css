@@ -12,6 +12,7 @@ form {
   padding: 11px 20px;
   font: bold 15px Montserrat;
   border: none;
+  cursor: pointer;
 }
 
 .home__posts {
@@ -49,12 +50,6 @@ form {
     justify-content: center;
   }
 }
-
-/* @media screen and (max-width:800px) {
-  .home__posts{
-    a
-  } 
-} */
 
 @media screen and (max-width: 600px) {
   .searchBtn {
