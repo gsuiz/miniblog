@@ -1,0 +1,22 @@
+.blackButton {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600;
+  transition: color 0.5s;
+
+  &:hover {
+    color: rgb(187, 187, 187);
+  }
+}
+
+@media screen and (max-width:600px) {
+  .blackButton{
+    padding: 10px 15px;
+    font-size:15px;
+  }
+}
