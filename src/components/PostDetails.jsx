@@ -1,4 +1,5 @@
 import style from './PostDetails.module.css'
+import BlackButton from './BlackButton'
 import { Link } from 'react-router'
 
 function PostDetails({ post }) {
@@ -23,7 +24,7 @@ function PostDetails({ post }) {
           ))}
         </ul>
         <Link to={`/posts/${post.id}`}>
-          <button className={style['single-posts__button']}>Ler</button>
+          <BlackButton text="Ler"></BlackButton>
         </Link>
       </div>
     </div>

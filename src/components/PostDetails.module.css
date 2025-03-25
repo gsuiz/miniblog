@@ -32,22 +32,6 @@
   font-weight: bold;
 }
 
-.single-posts__button {
-  background-color: black;
-  color: white;
-  border: none;
-  padding: 5px 30px;
-  margin-top: 10px;
-  cursor: pointer;
-  font-size: 17px;
-  font-weight: bold;
-  transition: color 0.5s;
-
-  &:hover {
-    color: rgb(187, 187, 187);
-  }
-}
-
 @media screen and (max-width: 950px) {
     .home__single-posts{
         width: 350px;

@@ -6,21 +6,12 @@ form {
   margin-top: 20px;
 }
 
-.searchBtn {
-  background-color: black;
-  color: white;
-  padding: 11px 20px;
-  font: bold 15px Montserrat;
-  border: none;
-  cursor: pointer;
-}
-
 .home__posts {
   width: 90vw;
   max-width: 2000px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: auto;
   gap: 30px;
 }
@@ -46,17 +37,20 @@ form {
 @media screen and (max-width: 1150px) {
   .home__posts{
     width: 90vw;
-    gap: 50px;
+    gap: 30px;
     justify-content: center;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .searchBtn {
-    font-size: 14px;
-    padding: 11px 15px;
+  form > input{
+    margin-bottom: 10px !important;
+  }
+  
+  form > button {
     display: block;
-    margin: auto;
+    margin:auto;
+    margin-top: 0 !important;
   }
 
   .home__posts{

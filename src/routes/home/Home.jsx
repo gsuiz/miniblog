@@ -2,6 +2,7 @@ import InputField from '../../components/InputField'
 import styles from './Home.module.css'
 import { Link, useNavigate } from 'react-router'
 import GreenButton from '../../components/GreenButton'
+import BlackButton from '../../components/BlackButton'
 import useFetchDocument from '../../hooks/useFetchDocument'
 import PostDetails from '../../components/PostDetails'
 import { useState } from 'react'
@@ -30,7 +31,7 @@ function Home() {
           handle={(e) => setQuery(e.target.value)}
           value={query}
         />
-        <button className={styles.searchBtn}>Pesquisar</button>
+        <BlackButton text="Pesquisar"></BlackButton>        
       </form>
       <div className={styles.home__posts}>
         {loading && <p>Carregando...</p>}
