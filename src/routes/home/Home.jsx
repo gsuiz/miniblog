@@ -3,14 +3,14 @@ import styles from './Home.module.css'
 import { Link, useNavigate } from 'react-router'
 import GreenButton from '../../components/GreenButton'
 import BlackButton from '../../components/BlackButton'
-import useFetchDocument from '../../hooks/useFetchDocument'
+import useFetchDocuments from '../../hooks/useFetchDocuments'
 import PostDetails from '../../components/PostDetails'
 import { useState } from 'react'
 
 function Home() {
   const navigate = useNavigate()
-  const [query, setQuery] = useState("")
-  const { documents: posts, loading } = useFetchDocument('posts')
+  const [query, setQuery] = useState('')
+  const { documents: posts, loading } = useFetchDocuments('posts')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -31,7 +31,7 @@ function Home() {
           handle={(e) => setQuery(e.target.value)}
           value={query}
         />
-        <BlackButton text="Pesquisar"></BlackButton>        
+        <BlackButton text="Pesquisar"></BlackButton>
       </form>
       <div className={styles.home__posts}>
         {loading && <p>Carregando...</p>}

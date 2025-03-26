@@ -8,6 +8,7 @@ import NewPost from './routes/New_Post/NewPost'
 import Dashboard from './routes/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
 import Search from './routes/Search/Search'
+import Posts from './routes/posts/Posts'
 
 const routes = createBrowserRouter([
   {
@@ -34,22 +35,26 @@ const routes = createBrowserRouter([
         path: '/posts/create',
         element: (
           <ProtectedRoute>
-            <NewPost/>
+            <NewPost />
           </ProtectedRoute>
-        )
+        ),
       },
       {
         path: '/dashboard',
         element: (
           <ProtectedRoute>
-            <Dashboard/>
+            <Dashboard />
           </ProtectedRoute>
-        )
+        ),
       },
       {
-        path:'/search',
-        element: <Search/>
-      }
+        path: '/search',
+        element: <Search />,
+      },
+      {
+        path: '/posts/:id',
+        element: <Posts />,
+      },
     ],
   },
 ])
