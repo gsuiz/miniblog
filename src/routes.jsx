@@ -9,6 +9,7 @@ import Dashboard from './routes/Dashboard/Dashboard'
 import ProtectedRoute from './components/ProtectedRoute'
 import Search from './routes/Search/Search'
 import Posts from './routes/posts/Posts'
+import EditPost from './routes/EditPost/EditPost'
 
 const routes = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const routes = createBrowserRouter([
       {
         path: '/posts/:id',
         element: <Posts />,
+      },
+      {
+        path: '/posts/edit/:id',
+        element: <EditPost/>
       },
     ],
   },

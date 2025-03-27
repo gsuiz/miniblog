@@ -40,7 +40,7 @@ function Dashboard() {
                   <Link to={`/posts/${post.id}`}>
                     <BlackButton text="Ver"></BlackButton>
                   </Link>
-                  <Link to={`/posts/${post.id}`}>
+                  <Link to={`/posts/edit/${post.id}`}>
                     <BlackButton text="Editar"></BlackButton>
                   </Link>
                   <BlackButton
