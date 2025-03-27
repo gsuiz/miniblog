@@ -4,13 +4,13 @@ import { useAuthValue } from '../../context/AuthContext'
 import useFetchDocuments from '../../hooks/useFetchDocuments'
 import GreenButton from '../../components/GreenButton'
 import BlackButton from '../../components/BlackButton'
+import { useDeleteDocument } from '../../hooks/useDeleteDocument'
 
 function Dashboard() {
   const { user } = useAuthValue()
   const uid = user.uid
   const { documents: posts, loading } = useFetchDocuments('posts', null, uid)
-
-  const deleteDocument = () => {}
+  const { deleteDocument } = useDeleteDocument('posts')
 
   if (loading) {
     return <p>Carregando...</p>
