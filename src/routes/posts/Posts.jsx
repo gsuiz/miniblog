@@ -1,11 +1,12 @@
 import { useParams } from 'react-router'
 import useFetchDocument from '../../hooks/useFetchDocument'
 import BlackButton from '../../components/BlackButton'
-import { Link } from 'react-router'
+import { useNavigate } from 'react-router'
 import style from './Posts.module.css'
 
 function Posts() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const { document: post } = useFetchDocument('posts', id)
 
   return (
@@ -19,9 +20,7 @@ function Posts() {
           <ul className={style['post-content__tags']}>
               {post.tags.map(item => <li><span>#</span>{item}</li>)}
           </ul>
-          <Link to="/">
-            <BlackButton text="Voltar"></BlackButton>
-          </Link>
+          <BlackButton text="Voltar" handle={() => navigate(-1)}></BlackButton>
         </>
       )}
     </div>

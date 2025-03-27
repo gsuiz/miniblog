@@ -1,7 +1,7 @@
 import style from './BlackButton.module.css'
 
-function BlackButton({ text }) {
-    return <button className={style.blackButton}>{text}</button>
+function BlackButton({ text, handle }) {
+    return <button className={style.blackButton} onClick={handle}>{text}</button>
 }
 
 export default BlackButton
