@@ -66,7 +66,7 @@ function EditPost() {
           handle={handleChange}
           value={postForm.tags}
         ></LabeledInput>
-        {!response.loading && <GreenButton text="Criar post" />}
+        {!response.loading && <GreenButton text="Editar " />}
         {response.loading && (
           <GreenButton text="Aguarde..." active={!response.loading} />
         )}

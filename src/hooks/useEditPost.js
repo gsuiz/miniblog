@@ -3,6 +3,7 @@ import { useInsertDocument } from './useInsertDocument'
 import { useAuthValue } from '../context/AuthContext'
 import { useNavigate, useParams } from 'react-router'
 import useFetchDocument from './useFetchDocument'
+import useUpdateDocument from './useUpdateDocument'
 
 function useEditPost() {
   const { id } = useParams()
@@ -34,7 +35,7 @@ function useEditPost() {
   const [postForm, dispatch] = useReducer(reducer, initialValue)
   const [formError, setFormError] = useState(null)
   const [imageClicked, setImageClicked] = useState(false)
-  const { insertDocument, response } = useInsertDocument('posts')
+  const { updateDocument, response } = useUpdateDocument('posts')
   const { user } = useAuthValue()
 
   useEffect(() => {
@@ -70,14 +71,16 @@ function useEditPost() {
 
     if (formError) return
 
-    insertDocument({
+    const data = {
       ...postForm,
       tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-    })
+    }
 
-    navigate('/')
+    updateDocument(id, data)
+
+    navigate('/dashboard')
   }
 
   return {
