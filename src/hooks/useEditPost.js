@@ -1,9 +1,12 @@
-import { useReducer, useState } from 'react'
-import { useInsertDocument } from './useInsertDocument'
+import { useEffect, useReducer, useState } from 'react'
 import { useAuthValue } from '../context/AuthContext'
-import { useNavigate } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
+import useFetchDocument from './useFetchDocument'
+import useUpdateDocument from './useUpdateDocument'
 
-function useCreatePost() {
+function useEditPost() {
+  const { id } = useParams()
+  const { document: post } = useFetchDocument('posts', id)
   const navigate = useNavigate()
 
   const initialValue = {
@@ -30,8 +33,22 @@ function useCreatePost() {
 
   const [postForm, dispatch] = useReducer(reducer, initialValue)
   const [formError, setFormError] = useState(null)
-  const { insertDocument, response } = useInsertDocument('posts')
+  const [imageClicked, setImageClicked] = useState(false)
+  const { updateDocument, response } = useUpdateDocument('posts')
   const { user } = useAuthValue()
+
+  useEffect(() => {
+    if (post) {
+      dispatch({ type: 'update_title', payload: post.title })
+      dispatch({ type: 'update_imageUrl', payload: post.imageUrl })
+      dispatch({ type: 'update_content', payload: post.content })
+
+      const tagsString = post.tags.join(', ')
+      dispatch({ type: 'update_tags', payload: tagsString })
+    }
+  }, [post])
+
+  const handleClick = () => setImageClicked((prev) => !prev)
 
   const handleChange = (e) =>
     dispatch({ type: `update_${e.target.name}`, payload: e.target.value })
@@ -53,17 +70,27 @@ function useCreatePost() {
 
     if (formError) return
 
-    insertDocument({
+    const data = {
       ...postForm,
       tags: tagsArray,
       uid: user.uid,
       createdBy: user.displayName,
-    })
+    }
 
-    navigate('/')
+    updateDocument(id, data)
+
+    navigate('/dashboard')
   }
 
-  return { postForm, handleChange, handleSubmit, response, formError }
+  return {
+    postForm,
+    handleChange,
+    handleSubmit,
+    response,
+    formError,
+    imageClicked,
+    handleClick,
+  }
 }
 
-export default useCreatePost
+export default useEditPost

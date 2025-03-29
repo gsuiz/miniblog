@@ -1,16 +1,31 @@
-import style from './NewPost.module.css'
+import style from './EditPost.module.css'
+import useEditPost from '../../hooks/useEditPost'
 import LabeledInput from '../../components/LabeledInput'
 import GreenButton from '../../components/GreenButton'
-import useCreatePost from '../../hooks/useCreatePost'
+import { RiCloseLargeFill as CloseIcon } from 'react-icons/ri'
+import { useDarkBackgroundContext } from '../../context/DarkBackgroundContext'
 
-function NewPost() {
+function EditPost() {
+  const { darkBackground, changeBackground } = useDarkBackgroundContext()
+
+  const handleClick = () => changeBackground()
+
   const { postForm, handleChange, handleSubmit, response, formError } =
-    useCreatePost()
+    useEditPost()
 
   return (
-    <div className={style.createPost}>
-      <h1>Criar post</h1>
-      <p>Escreva sobre o que quiser e compartilhe o seu conhecimento</p>
+    <div
+      className={`${style.editPost} ${
+        darkBackground ? style['editPost--darkened'] : ''
+      }`}
+    >
+      <div className={style['editPost__background']}></div>
+      <CloseIcon
+        className={style['editPost__close-icon']}
+        onClick={handleClick}
+      ></CloseIcon>
+      <h1>Editar post</h1>
+      <p>Altere os dados do post como desejar.</p>
       <form onSubmit={handleSubmit}>
         <LabeledInput
           label="Título:"
@@ -28,6 +43,14 @@ function NewPost() {
           handle={handleChange}
           value={postForm.imageUrl}
         ></LabeledInput>
+        <p className={style['editPost__preview']}>
+          <span>Preview:</span>
+          <img
+            src={postForm.imageUrl || null}
+            className={style['editPost__image-preview']}
+            onClick={darkBackground ? null : handleClick}
+          />
+        </p>
         <LabeledInput
           label="Conteúdo:"
           type="textarea"
@@ -44,7 +67,7 @@ function NewPost() {
           handle={handleChange}
           value={postForm.tags}
         ></LabeledInput>
-        {!response.loading && <GreenButton text="Criar post" />}
+        {!response.loading && <GreenButton text="Editar " />}
         {response.loading && (
           <GreenButton text="Aguarde..." active={!response.loading} />
         )}
@@ -55,4 +78,4 @@ function NewPost() {
   )
 }
 
-export default NewPost
+export default EditPost

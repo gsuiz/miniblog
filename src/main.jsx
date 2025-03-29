@@ -4,11 +4,14 @@ import './index.css'
 import routes from './routes'
 import { RouterProvider } from 'react-router'
 import { AuthProvider } from './context/AuthContext'
+import { DarkBackgroundProvider } from './context/DarkBackgroundContext'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={routes}></RouterProvider>
+      <DarkBackgroundProvider>
+        <RouterProvider router={routes}></RouterProvider>
+      </DarkBackgroundProvider>
     </AuthProvider>
   </StrictMode>
 )

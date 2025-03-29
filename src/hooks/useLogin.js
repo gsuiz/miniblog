@@ -41,7 +41,7 @@ function useLogin() {
     setErrors(null)
 
     const res = await login(loginCredentials)
-    if(res === "success") navigate("/")
+    if (res === 'success') navigate('/')
   }
 
   return { loginCredentials, handleChange, handleSubmit, errors, loading }

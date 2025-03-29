@@ -5,7 +5,7 @@
   text-align: left;
 }
 
-.single-post__box-image{
+.single-post__box-image {
   overflow: hidden;
   border-radius: 20px;
   display: flex;
@@ -45,7 +45,7 @@
 }
 
 @media screen and (max-width: 950px) {
-    .home__single-posts{
-        width: 350px;
-    }
+  .home__single-posts {
+    width: 350px;
+  }
 }

@@ -70,10 +70,14 @@ function MenuToggle() {
         </li>
         {user && (
           <li>
-            <button onClick={() => {
-              logout()
-              navigate("/login")
-            }}>Sair</button>
+            <button
+              onClick={() => {
+                logout()
+                navigate('/login')
+              }}
+            >
+              Sair
+            </button>
           </li>
         )}
       </ul>

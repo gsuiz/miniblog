@@ -69,7 +69,7 @@ function NavMenu() {
           <button
             onClick={() => {
               logout()
-              navigate("/login")
+              navigate('/login')
             }}
           >
             Sair
