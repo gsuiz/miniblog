@@ -66,17 +66,17 @@
 }
 
 @media screen and (max-width: 850px) {
-    .dashboard__line{
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .dashboard__line {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .dashboard__line span{
-        width: 2px;
-        background-color: gray;
-        height: 30px;
-        margin-left: 25px;
-    }
+  .dashboard__line span {
+    width: 2px;
+    background-color: gray;
+    height: 30px;
+    margin-left: 25px;
+  }
 
   .dashboard__single-post {
     flex-direction: column;

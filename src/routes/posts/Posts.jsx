@@ -14,11 +14,20 @@ function Posts() {
       {post && (
         <>
           <h1>{post.title}</h1>
-          <img src={post.imageUrl} className={style['post-content__img']} alt="Imagem do post" />
+          <img
+            src={post.imageUrl}
+            className={style['post-content__img']}
+            alt="Imagem do post"
+          />
           <p className={style['post-content__text']}>{post.content}</p>
           <h3>Este post fala sobre:</h3>
           <ul className={style['post-content__tags']}>
-              {post.tags.map(item => <li><span>#</span>{item}</li>)}
+            {post.tags.map((item) => (
+              <li>
+                <span>#</span>
+                {item}
+              </li>
+            ))}
           </ul>
           <BlackButton text="Voltar" handle={() => navigate(-1)}></BlackButton>
         </>

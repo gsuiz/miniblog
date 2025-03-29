@@ -41,7 +41,7 @@ export function useAuth() {
         displayName: data.name,
       })
 
-      return "success"
+      return 'success'
     } catch (error) {
       let systemErrorMessage
 
@@ -63,8 +63,7 @@ export function useAuth() {
     checkIfIsCancelled()
 
     signOut(auth)
-    
-  } 
+  }
 
   const login = async (data) => {
     checkIfIsCancelled()
@@ -75,7 +74,7 @@ export function useAuth() {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password)
       setLoading(false)
-      return "success"
+      return 'success'
     } catch (error) {
       let systemErrorMessage
 

@@ -4,7 +4,8 @@ import GreenButton from '../../components/GreenButton'
 import useCreatePost from '../../hooks/useCreatePost'
 
 function NewPost() {
-  const { postForm, handleChange, handleSubmit, response, formError } = useCreatePost()
+  const { postForm, handleChange, handleSubmit, response, formError } =
+    useCreatePost()
 
   return (
     <div className={style.createPost}>
@@ -44,9 +45,11 @@ function NewPost() {
           value={postForm.tags}
         ></LabeledInput>
         {!response.loading && <GreenButton text="Criar post" />}
-        {response.loading && <GreenButton text="Aguarde..." active={!response.loading}/>}
-        {response.error && <div className='error'>{response.error}</div>}
-        {formError && <div className='error'>{formError}</div>}
+        {response.loading && (
+          <GreenButton text="Aguarde..." active={!response.loading} />
+        )}
+        {response.error && <div className="error">{response.error}</div>}
+        {formError && <div className="error">{formError}</div>}
       </form>
     </div>
   )

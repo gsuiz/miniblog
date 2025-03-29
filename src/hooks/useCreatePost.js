@@ -42,7 +42,7 @@ function useCreatePost() {
 
     try {
       new URL(postForm.imageUrl)
-    // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-unused-vars
     } catch (err) {
       setFormError('A imagem precisa ser uma URL.')
     }
@@ -60,7 +60,7 @@ function useCreatePost() {
       createdBy: user.displayName,
     })
 
-    navigate("/")
+    navigate('/')
   }
 
   return { postForm, handleChange, handleSubmit, response, formError }

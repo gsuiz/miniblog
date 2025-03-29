@@ -38,7 +38,7 @@ function useRegister() {
   const handleChange = (e) =>
     dispatch({ type: `update_${e.target.name}`, payload: e.target.value })
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (registrationData.password !== registrationData.confirmation_password) {
@@ -46,7 +46,7 @@ function useRegister() {
     } else {
       const res = await createUser(registrationData)
 
-      if(res === "success") navigate("/")
+      if (res === 'success') navigate('/')
     }
   }
   return { registrationData, handleChange, handleSubmit, errors, loading }

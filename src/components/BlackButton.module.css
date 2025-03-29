@@ -14,9 +14,9 @@
   }
 }
 
-@media screen and (max-width:600px) {
-  .blackButton{
+@media screen and (max-width: 600px) {
+  .blackButton {
     padding: 10px 15px;
-    font-size:15px;
+    font-size: 15px;
   }
 }

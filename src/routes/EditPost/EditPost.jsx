@@ -3,26 +3,27 @@ import useEditPost from '../../hooks/useEditPost'
 import LabeledInput from '../../components/LabeledInput'
 import GreenButton from '../../components/GreenButton'
 import { RiCloseLargeFill as CloseIcon } from 'react-icons/ri'
+import { useDarkBackgroundContext } from '../../context/DarkBackgroundContext'
 
 function EditPost() {
-  const {
-    postForm,
-    handleChange,
-    handleSubmit,
-    response,
-    formError,
-    imageClicked,
-    handleClick,
-  } = useEditPost()
+  const { darkBackground, changeBackground } = useDarkBackgroundContext()
+
+  const handleClick = () => changeBackground()
+
+  const { postForm, handleChange, handleSubmit, response, formError } =
+    useEditPost()
 
   return (
     <div
       className={`${style.editPost} ${
-        imageClicked ? style['editPost--teste'] : ''
+        darkBackground ? style['editPost--darkened'] : ''
       }`}
     >
       <div className={style['editPost__background']}></div>
-      <CloseIcon className={style['editPost__close-icon']} onClick={handleClick}></CloseIcon>
+      <CloseIcon
+        className={style['editPost__close-icon']}
+        onClick={handleClick}
+      ></CloseIcon>
       <h1>Editar post</h1>
       <p>Altere os dados do post como desejar.</p>
       <form onSubmit={handleSubmit}>
@@ -45,9 +46,9 @@ function EditPost() {
         <p className={style['editPost__preview']}>
           <span>Preview:</span>
           <img
-            src={postForm.imageUrl}
+            src={postForm.imageUrl || null}
             className={style['editPost__image-preview']}
-            onClick={imageClicked ? null : handleClick}
+            onClick={darkBackground ? null : handleClick}
           />
         </p>
         <LabeledInput
